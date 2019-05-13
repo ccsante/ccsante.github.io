@@ -120,9 +120,9 @@ canvas {
 }
 
 .places__link:hover {
-  background: #ed225d;
+  background: #5293b0;
   color: #fff;
-  border: solid 1px #ed225d;
+  border: solid 1px #5293b0;
 }
 
 .places__spacer {
