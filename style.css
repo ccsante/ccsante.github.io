@@ -149,6 +149,26 @@ canvas {
   font-weight: bold;
 }
 
+.container-center {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+/* 
+.container-left {
+  width: 40%;
+}
+
+.container-right {
+  width: 60%;
+} */
+
+.poster-image {
+  width: 100%;
+}
+.poster-image-small {
+  width: 40%;
+}
 /* TEAM */
 .team__list {
   padding: 0;
@@ -189,8 +209,22 @@ canvas {
   width: 100%;
 }
 
+
 /* RESPONSIVENESS */
 @media all and (min-width:1200px){
+  .container-left {
+    width: 40%;
+  }
+
+  .container-right {
+    width: 60%;
+  }
+  .container-center {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin-left: 10%;
+  }
   .main-content {
     width: 80%;
   }
