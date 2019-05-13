@@ -8,6 +8,12 @@ function setup() {
   /* Use for static colours
   COMMENT HERE IF YOU WANT DYNAMIC COLOURS*/
   //setColours();
+  stroke(128);
+  strokeWeight(0.5)
+  lines(50, height/2, 14, 200);
+  lines(150,80, 7, 50);
+  lines(width - 100, height*0.8, 11 , 150);
+  lines(width +200, height*0.1, 21 , 350);
 
 }
 
@@ -32,12 +38,7 @@ function setColours() {
 function draw() 
 
 {
-  stroke(128);
-  strokeWeight(0.5)
-  lines(50, height/2, 14, 200);
-  lines(150,80, 7, 50);
-  lines(width - 100, height*0.8, 11 , 150);
-  lines(width +200, height*0.1, 21 , 350);
+  
 
 
 }

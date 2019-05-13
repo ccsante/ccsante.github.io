@@ -31,6 +31,7 @@
 }
 
 .blr-nav {
+  display: none;
   justify-content: center;
   background: white;
   height: 2rem;
@@ -50,4 +51,10 @@
 .blr-logo {
   display: flex;
   margin: 0 auto;
+}
+
+@media all and (min-width:1200px){
+  .blr-nav {
+    display: flex;
+  }
 }
