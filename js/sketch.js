@@ -1,66 +1,77 @@
-var colourx = [];
-var coloury = [];
-var colourz = [];
+let no = 16;
+let r1 = 70;
+let r2 = 100;
 
+let dist = 200;
 
+let bg = "#7cc3b1";
+let fg = "#35b1b4";
+
+// let choice=[+1,-1];
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  /* Use for static colours
-  COMMENT HERE IF YOU WANT DYNAMIC COLOURS*/
-  //setColours();
-  stroke(128);
-  strokeWeight(0.5)
-  lines(50, height/2, 14, 200);
-  lines(150,80, 7, 50);
-  lines(width - 100, height*0.8, 11 , 150);
-  lines(width +200, height*0.1, 21 , 350);
-
+	angleMode(DEGREES);
+	rectMode(CENTER);
+	noStroke();
+	frameRate(10);
+  background(bg);
+	
+}
+function draw() {
+	
+	for(let i=0;i<width*1.5;i+=dist) {
+		for(let j =0;j<height*1.5;j+=dist) {
+			push();
+			noStroke();
+			translate(i,j);
+			rotate((i+j)*30);
+			rotate(360/no*frameCount);
+			scale(0.55);
+			drawMandala(fg);
+			pop();
+		}
+	}
+	
+	
+	if(frameCount%(no+3) ==0) {
+		background(bg);
+	}
 }
 
-function getPoints(xc, yc) {
-  for (let i = 0; i < count; i++) {
-    xarr[i] = xc + (rad * sin((2 * (22 / 7) * i) / count));
-    yarr[i] = yc + (rad * cos((2 * (22 / 7) * i) / count));
-    point(xarr[i], yarr[i]);
-  }
-}
-
-function setColours() {
-  for (let i = 0; i < 50; i++) {
-
-    colourx[i] = random() * 255;
-    coloury[i] = random() * 255;
-    colourz[i] = random() * 255;
-
-  }
-}
-
-function draw() 
-
-{
-  
-
-
-}
-
-function lines(xc, yc, count, rad) {
-
-  let xarr = [];
-  let yarr = [];
-
-
-  for (var i = 0; i < count; i++) {
-    xarr[i] = xc + (rad * sin((2 * (22 / 7) * i) / count));
-    yarr[i] = yc + (rad * cos((2 * (22 / 7) * i) / count));
-    point(xarr[i], yarr[i]);
-  }
-
-  for (var i = 0; i < count; i++) {
-    for (let j = 0; j < count; j++) {
-      if (((i - j) != 1) && ((j - i) != 1)) {
-        //stroke(255 / 16 * j, 255 / 256 * i * j, 255 / 16 * i);
-        line(xarr[i], yarr[i], xarr[j], yarr[j]);
-      }
-    }
-  }
+function drawMandala(colour) {
+	fill(colour);
+	//center dot + line
+	ellipse(0,0,12);
+	rect(r1/2+5, 0, 20,6,10);
+	
+	//small circle b/w dot and line
+	stroke(colour);
+	strokeWeight(5);
+	arc(0,0,r1/2,r1/2,8*360/no,9*360/no, OPEN);
+	
+	// 2 circles
+	noStroke();
+	ellipse(0, -r1, 10,10);
+	stroke(colour);
+	strokeWeight(5);
+	arc(0,0,2*r1+25,2*r1+25,-360/no,0, OPEN);
+	arc(0,0,2*r1+45,2*r1+45,360/no*2,360/no*3, OPEN);
+	
+	//tiny bindhi thing
+	noStroke();
+	triangle(0,r2,6,r2+10,-6,r2+10);
+	ellipse(0,r2+10,11);
+	rotate(180/no);
+	// triangle(0,r2,6,r2+10,-6,r2+10);
+	ellipse(0,r2+10,11)
+	rotate(-180/no);
+	
+	stroke(colour);
+	strokeWeight(5);
+	noFill();
+	arc(r2+10,0,35,35, 270,90, OPEN);
+	arc(r2+10,0,55,55, 310,50, OPEN);
+	
+	rotate(180/no);
+	// ellipse(0,r2+35,5,5);
 }
