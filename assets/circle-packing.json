@@ -1,0 +1,60 @@
+{
+  "name": "",
+  "children": [
+    {
+      "name": "CCSante",
+      "children": [
+        {
+          "name": "Bengaluru",
+          "value": 2.5,
+          "url": "https://www.instagram.com/ccsantein"
+        },
+        {
+          "name": "Paper Crane Lab",
+          "value": 2.5,
+          "url": "https://www.papercranelab.com/"
+        }
+      ]
+    },
+    {
+      "name": "PCD India",
+      "children": [
+        {
+          "name": "Bengaluru",
+          "value": 1,
+          "url": "https://processingindia.com/bangalore/index.html"
+        },
+        {
+          "name": "Delhi",
+          "value": 1,
+          "url": "https://processingindia.com/delhi/index.html"
+        },
+        {
+          "name": "Chandigarh",
+          "value": 1,
+          "url": "https://processingindia.com/2020/index.html"
+        },
+        {
+          "name": "Mumbai",
+          "value": 1,
+          "url": "https://processingindia.com/2019/mumbai.html"
+        },
+        {
+          "name": "Jalandhar",
+          "value": 1,
+          "url": "https://processingindia.com/2019/jalandhar.html"
+        },
+        {
+          "name": "Gandhinagar",
+          "value": 1,
+          "url": "https://processingindia.com/2019/gandhinagar.html"
+        },
+        {
+          "name": "Online",
+          "value": 1,
+          "url": "https://processingindia.com/2021/index.html"
+        }
+      ]
+    }
+  ]
+}

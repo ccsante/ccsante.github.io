@@ -1,23 +1,25 @@
 /* HTML BASE */
 html {
   height: 100%;
-  font-family: 'Fjalla One', sans-serif;
+  font-family: "Fjalla One", sans-serif;
 }
 
-h1,h2,h3,p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
   padding: 0;
 }
-body  {
+body {
   background-size: cover;
   background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin: 0;
-  padding: 1rem;
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
@@ -35,19 +37,18 @@ header {
 }
 
 .listitem {
-
 }
 
 canvas {
-   position: fixed;
-   top: 0;
-   left:0;
-   z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .section {
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -71,7 +72,6 @@ canvas {
   text-decoration: none;
   text-transform: uppercase;
   color: #f6747f;
-  
 }
 
 .rsvp {
@@ -85,10 +85,13 @@ canvas {
 }
 
 .sketch-credits {
-  align-self: flex-end;
   display: flex;
   flex-direction: column;
   align-items: end;
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
   color: #ffffff;
   font-size: small;
   gap: 0.2rem;
@@ -96,13 +99,43 @@ canvas {
 
 .sketch-credits .link {
   text-transform: none;
-  color: #f6747f;
-  text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white;
-  /* text-shadow: 0.2px 0.2px rgba(255, 255, 255, 120); */
+  color: red;
 }
 
 .footer {
-  font-family: Arial, Helvetica, sans-serif; 
-  font-size: small; 
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
   color: whitesmoke;
+}
+
+.chart-section {
+  width: 80%;
+  height: 60%;
+}
+
+#circle-packing svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  height: auto;
+  /* background: hsl(152, 80%, 80%); */
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  body {
+    min-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .chart-section {
+    width: 90vw;
+    height: 95dvh;
+  }
+
+  #circle-packing,
+  #circle-packing svg {
+    width: 100%;
+    height: 100%;
+  }
 }
