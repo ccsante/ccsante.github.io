@@ -11,7 +11,7 @@ const chartOptions = {
   hoverStroke: "yellow",
   strokeWidth: "2px",
   labelFont: "bold 1rem monospace",
-  labelSizeMultiplier: 0.3,
+  labelSizeMultiplier: 0.88,
   labelFill: "yellow",
   labelWritingMode: "vertical-rl",
   labelTextOrientation: "upright",
@@ -59,7 +59,8 @@ fetch("./assets/circle-packing.json")
       .create("svg")
       .attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
       .attr("role", "img")
-      .attr("aria-label", "Interactive CCSante community circle packing chart");
+      .attr("aria-label", "Interactive CCSante community circle packing chart")
+      .attr("overflow", "visible");
     const node = svg
       .append("g")
       .selectAll("circle")
@@ -112,7 +113,9 @@ fetch("./assets/circle-packing.json")
       .style("fill-opacity", (node) => (node.parent === root ? 1 : 0))
       .style("user-select", "none")
       .style("font", chartOptions.labelFont)
-      .style("font-size", (node) => node.r * chartOptions.labelSizeMultiplier)
+      .style("font-size", (node) =>
+        Math.pow(node.r, chartOptions.labelSizeMultiplier),
+      )
       .style("fill", chartOptions.labelFill)
       .style("writing-mode", chartOptions.labelWritingMode)
       .style("text-orientation", chartOptions.labelTextOrientation)

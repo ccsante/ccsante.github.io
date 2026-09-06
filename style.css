@@ -1,4 +1,10 @@
 /* HTML BASE */
+html,
+body,
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   font-family: "Fjalla One", sans-serif;
@@ -109,7 +115,7 @@ canvas {
 }
 
 .chart-section {
-  width: 80%;
+  width: 70%;
   height: 60%;
 }
 
