@@ -1,5 +1,7 @@
+const isMobileLayout = window.matchMedia("(max-width: 768px)").matches;
+
 const chartOptions = {
-  width: window.innerWidth * 0.8,
+  width: window.innerWidth * (isMobileLayout ? 0.7 : 0.8),
   height: window.innerHeight,
   padding: 3,
   colorDomain: [0, 5],
@@ -30,12 +32,29 @@ fetch("./assets/circle-packing.json")
       .domain(chartOptions.colorDomain)
       .range(chartOptions.colorRange)
       .interpolate(d3.interpolateHcl);
-    const root = d3.pack().size([width, height]).padding(chartOptions.padding)(
+    // d3.pack() always places sibling circles horizontally first, regardless of
+    // container aspect ratio. To lean the layout top-to-bottom on mobile, pack
+    // into a landscape rect (where that horizontal placement has room to work)
+    // then rotate the whole computed layout 90° into the portrait canvas.
+    const packWidth = isMobileLayout ? height : width;
+    const packHeight = isMobileLayout ? width : height;
+    const root = d3
+      .pack()
+      .size([packWidth, packHeight])
+      .padding(chartOptions.padding)(
       d3
         .hierarchy(data)
         .sum((node) => node.value)
         .sort((first, second) => second.value - first.value),
     );
+    if (isMobileLayout) {
+      root.each((entry) => {
+        const rotatedX = packWidth - entry.y;
+        const rotatedY = entry.x;
+        entry.x = rotatedX;
+        entry.y = rotatedY;
+      });
+    }
     const svg = d3
       .create("svg")
       .attr("viewBox", `-${width / 2} -${height / 2} ${width} ${height}`)
@@ -99,7 +118,7 @@ fetch("./assets/circle-packing.json")
       .style("text-orientation", chartOptions.labelTextOrientation)
       .text((node) => node.data.name);
 
-    label
+    const labelRotation = label
       .append("animateTransform")
       .attr("attributeName", "transform")
       .attr("type", "rotate")
@@ -172,5 +191,14 @@ fetch("./assets/circle-packing.json")
     svg.on("click", (event) => zoom(event, root));
     zoomTo([focus.x, focus.y, focus.r * 2]);
     document.querySelector("#circle-packing").append(svg.node());
+    // Mobile WebKit defers SMIL restarts until after the element is painted, so
+    // wait a frame (not just a tick) before kicking off the rotation.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        labelRotation.each(function () {
+          if (typeof this.beginElement === "function") this.beginElement();
+        });
+      });
+    });
   })
   .catch((error) => console.error(error));
