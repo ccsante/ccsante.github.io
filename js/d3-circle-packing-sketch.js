@@ -49,7 +49,7 @@ fetch("./assets/circle-packing.json")
     );
     if (isMobileLayout) {
       root.each((entry) => {
-        const rotatedX = packWidth - entry.y;
+        const rotatedX = packHeight - entry.y;
         const rotatedY = entry.x;
         entry.x = rotatedX;
         entry.y = rotatedY;
@@ -133,9 +133,12 @@ fetch("./assets/circle-packing.json")
 
     let focus = root;
     let view;
+    // Fitting to the narrower dimension leaves dead space on the longer axis;
+    // fill the longer axis instead and let the shorter one crop slightly.
+    const fitSize = isMobileLayout ? Math.max(width, height) : width;
 
     function zoomTo(nextView) {
-      const scale = width / nextView[2];
+      const scale = fitSize / nextView[2];
       view = nextView;
       label.attr(
         "transform",
