@@ -5,13 +5,18 @@
       "name": "CCSante",
       "children": [
         {
+          "name": "Meetup",
+          "value": 2,
+          "url": "https://ccsante.in/meetup"
+        },
+        {
           "name": "Bengaluru",
-          "value": 2.5,
+          "value": 2,
           "url": "https://www.instagram.com/ccsantein"
         },
         {
           "name": "Paper Crane Lab",
-          "value": 2.5,
+          "value": 2,
           "url": "https://www.papercranelab.com/"
         }
       ]
