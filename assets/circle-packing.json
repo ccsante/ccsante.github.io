@@ -60,6 +60,21 @@
           "url": "https://processingindia.com/2021/index.html"
         }
       ]
+    },
+    {
+      "name": "Algorave",
+      "children": [
+        {
+          "name": "India",
+          "value": 3,
+          "url": "https://algorave.in/"
+        },
+        {
+          "name": "Bangalore",
+          "value": 3,
+          "url": "https://livecode-blr.vercel.app/"
+        }
+      ]
     }
   ]
 }
