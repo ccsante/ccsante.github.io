@@ -26,6 +26,13 @@ This is the repository for the CCSante website.
                     <sub><b>Anushka Trivedi</b></sub>
                 </a>
             </td>
+            <td align="center">
+                <a href="https://github.com/Sangarshanan">
+                    <img src="https://avatars.githubusercontent.com/u/21971847?v=4" width="100;" alt="Sangarshanan"/>
+                    <br />
+                    <sub><b>sangarshanan</b></sub>
+                </a>
+            </td>
 		</tr>
 	<tbody>
 </table>
